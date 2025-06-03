@@ -15,5 +15,8 @@ $routes->post('/register/save', 'Register::save');
 $routes->get('dashboard', 'Dashboard::index');
 $routes->post('lapor/kirim', 'Dashboard::kirim');
 
+$routes->get('/laporan-keluhan', 'Dashboard::laporanKeluhan');
+
+
 
 

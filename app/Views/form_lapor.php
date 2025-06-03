@@ -58,7 +58,7 @@
             <input type="text" name="name" placeholder="Enter name" value="<?= old('name') ?>">
             <textarea name="keluhan" placeholder="Enter Keluhan"><?= old('keluhan') ?></textarea>
             <input type="text" name="lokasi" placeholder="Enter Lokasi" value="<?= old('lokasi') ?>">
-            <input type="file" name="bukti">
+            <input type="file" id="bukti" name="bukti">
             <button type="submit">Kirim</button>
         </form>
     </div>

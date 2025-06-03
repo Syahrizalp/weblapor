@@ -20,14 +20,17 @@ class Dashboard extends BaseController
         $lokasi   = $this->request->getPost('lokasi');
         $bukti    = $this->request->getFile('bukti');
 
-        $buktiData = null;
+        $buktiFileName = null;
 
         if ($bukti && $bukti->isValid() && !$bukti->hasMoved()) {
-            // Baca isi file sebagai binary
-            $buktiData = file_get_contents($bukti->getTempName());
+            // Generate nama file acak untuk mencegah konflik
+            $buktiFileName = $bukti->getRandomName();
+
+            // Pindahkan file ke folder public/uploads
+            $bukti->move(ROOTPATH . 'public/uploads', $buktiFileName);
         }
 
-        // Simpan ke database
+        // Simpan hanya nama file ke database
         $db = \Config\Database::connect();
         $builder = $db->table('tb_laporan');
 
@@ -35,11 +38,20 @@ class Dashboard extends BaseController
             'nama_pelapor' => $nama,
             'keluhan'      => $keluhan,
             'lokasi'       => $lokasi,
-            'bukti'        => $buktiData,
+            'bukti'        => $buktiFileName, // hanya nama file
         ]);
 
         // Flash message dan redirect kembali ke dashboard
         session()->setFlashdata('popup_message', 'Laporan berhasil dikirim!');
-        return redirect()->to(base_url('/dashboard'));
+        return redirect()->to('/dashboard');
     }
+
+    public function laporanKeluhan()
+    {
+        $db = \Config\Database::connect();
+        $laporan = $db->table('tb_laporan')->get()->getResultArray();
+
+        return view('laporan_keluhan', ['laporan' => $laporan]);
+    }
+    
 }

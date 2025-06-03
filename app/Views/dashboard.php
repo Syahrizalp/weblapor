@@ -1,90 +1,11 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <title>Dashboard - Lapor Pak</title>
-    <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #fff;
-        }
-        .header {
-            position: relative;
-            height: 300px;
-            background-image: url('<?= base_url('assets/images/dashboard-bg.jpg') ?>');
-            background-size: cover;
-            background-position: center;
-            color: white;
-        }
-       .header-text {
-    position: absolute;
-    top: 50%;
-    left: 30px; /* tetap agak kiri */
-    transform: translateY(-50%); /* untuk vertikal centering */
-    font-size: 24px;
-    font-weight: bold;
-    line-height: 1.4;
-}
 
-        .nav {
-            display: flex;
-            justify-content: center;
-            padding: 15px 0;
-            background-color: #fff;
-            border-bottom: 2px solid #eee;
-        }
-        .nav a {
-            margin: 0 25px;
-            text-decoration: none;
-            color: black;
-            font-weight: 500;
-            font-size: 16px;
-            position: relative;
-        }
-        .nav a.active::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: black;
-        }
-        .profile {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-        }
-        .profile img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-    </style>
-</head>
 <body>
 
-<div class="header">
-    <div class="header-text">
-        WEBSITE LAPOR PAK <br>
-        MEMBERIKAN LAYANAN KELUH <br>
-        KESAH MASYARAKAT
-    </div>
-    <div class="profile">
-        <img src="<?= base_url('assets/images/profile.png') ?>" alt="Profile">
-    </div>
-</div>
+<?php include('header.php'); ?>
 
-<div class="nav">
-    <a href="<?= base_url('dashboard') ?>" class="active">Home</a>
-    <a href="#">Laporan keluhan</a>
-    <a href="#">Laporan Warga</a>
-    <a href="#">Jawaban</a>
-    <a href="#">About</a>
-</div>
+
 
 <!-- Konten utama bisa ditambahkan di sini -->
 <div class="content" style="padding: 20px;">
